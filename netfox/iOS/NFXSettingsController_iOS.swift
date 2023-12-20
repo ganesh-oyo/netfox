@@ -94,6 +94,7 @@ class NFXSettingsController_iOS: NFXSettingsController, UITableViewDelegate, UIT
         case 1: return self.tableData.count
         case 2: return 1
         case 3: return 1
+        case 4: return 1
         default: return 0
         }
     }
@@ -135,6 +136,14 @@ class NFXSettingsController_iOS: NFXSettingsController, UITableViewDelegate, UIT
             cell.textLabel?.font = UIFont.NFXFont(size: 16)
             
             return cell
+        
+        case 4:
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.text = "App Developer Options"
+            cell.textLabel?.textColor = UIColor.NFXRedColor()
+            cell.textLabel?.font = UIFont.NFXFont(size: 16)
+            
+            return cell
             
         default: return UITableViewCell()
 
@@ -142,7 +151,7 @@ class NFXSettingsController_iOS: NFXSettingsController, UITableViewDelegate, UIT
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -180,6 +189,8 @@ class NFXSettingsController_iOS: NFXSettingsController, UITableViewDelegate, UIT
             shareSessionLogsPressed()
         case 3:
             clearDataButtonPressedOnTableIndex(indexPath)
+        case 4:
+            NotificationCenter.default.post(Notification(name: NSNotification.Name("developer_options_clicked")))
         default:
             break
         }
@@ -192,6 +203,7 @@ class NFXSettingsController_iOS: NFXSettingsController, UITableViewDelegate, UIT
         case 0: return 44
         case 1: return 33
         case 2,3: return 44
+        case 4: return 44
         default: return 0
         }
     }
