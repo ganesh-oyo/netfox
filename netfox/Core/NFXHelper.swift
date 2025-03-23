@@ -239,7 +239,7 @@ extension NFXImage {
 extension InputStream {
   func readfully() -> Data {
     var result = Data()
-    var buffer = [UInt8](repeating: 0, count: 4096)
+    var buffer = [UInt8](repeating: 0, count: 8192)
     
     open()
     
